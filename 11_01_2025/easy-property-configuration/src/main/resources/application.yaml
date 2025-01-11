@@ -1,0 +1,264 @@
+spring:
+  application:
+    name: easy-property-configuration
+  devtools:
+    restart:
+      enabled: true
+
+
+app:
+  advanced-config:
+    tasks:
+      concurrency-limit: 0
+      schedules:
+        - name: test
+          cron: 0.5.5
+    feature-flags:
+      enable-multi-region-support: false
+      beta-features:
+        - feat1
+        - feat2
+        - feat3
+      stable-features:
+        - feat4
+        - feat8
+        - feat0
+    logging:
+      level: DEBUG
+      external-collectors:
+        - name: test-name
+          endpoint: http://jdskfj
+          apiKey: api-test-token
+          token: test-token
+  cache: false
+  system:
+    retry: 0
+    session-cache: false
+    timeout: 60
+  tenant:
+    - name: sop
+      company:
+        - code: 1
+          propertyA: a
+          propertyB: b
+          repo:
+            - name: repo1
+              url: yerui
+          routing:
+            channel:
+              - name: tets
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+#app:
+#  cache: true
+#  system:
+#    timeout: 600
+#    retry: 35
+#    session-cache: enabled
+#
+#  advanced-config:
+#    logging:
+#      level: DEBUG
+#      externalCollectors:
+#        - name: datadog
+#          apiKey: "my-datadog-api-key"
+#        - name: splunk
+#          endpoint: "https://splunk-collector:8088"
+#          token: "splunk-auth-token"
+#    tasks:
+#      concurrencyLimit: 10
+#      schedules:
+#        - name: cleanup
+#          cron: "0 0 * * *"
+#        - name: syncData
+#          cron: "30 * * * *"
+#    featureFlags:
+#      enableMultiRegionSupport: true
+#      betaFeatures:
+#        - dynamicRouting
+#        - experimentalCache
+#      stableFeatures:
+#        - standardRouting
+#        - customRetryLogic
+#
+#  tenant:
+#    - name: tenant-a
+#      company:
+#        - code: company-a
+#          propertyA: "CompanyA-PropertyA"
+#          propertyB: "CompanyA-PropertyB"
+#          routing:
+#            channels:
+#              - name: rvm-sure
+#                url: http://sure:8080/
+#                signature: test-sure-token
+#              - name: rvm-sepa
+#                url: http://sepa:8080/
+#                signature: test-sepa-token
+#            error: ALLOWED
+#
+#            advanced:
+#              endpointRules:
+#                - match: "/api/v1/payment/**"
+#                  timeoutMs: 5000
+#                  retries: 3
+#                - match: "/api/v1/refund/**"
+#                  timeoutMs: 7000
+#                  retries: 2
+#              fallback:
+#                url: http://fallback:8080/
+#                signature: fallback-token
+#
+#          metadata:
+#            owner: "team-A-ops"
+#            tags:
+#              - "finance"
+#              - "premium-tier"
+#            configVersion: 2.1
+#
+#        - code: company-b
+#          propertyA: "CompanyB-PropertyA"
+#          propertyB: "CompanyB-PropertyB"
+#          routing:
+#            channels:
+#              - name: channels-abc
+#                url: http://abc:8080/
+#                signature: test-abc-token
+#
+#            advanced:
+#              endpointRules:
+#                - match: "/api/v2/checkout/**"
+#                  timeoutMs: 6000
+#                  retries: 1
+#
+#          repo:
+#            - name: repo-a
+#              url: https://repo-a:8080/
+#              advancedSettings:
+#                concurrencyLimit: 3
+#                cacheTTL: 300
+#            - name: repo-b
+#              url: https://repo-b:8056/
+#              advancedSettings:
+#                concurrencyLimit: 5
+#                cacheTTL: 600
+#
+#          metadata:
+#            owner: "team-B-ops"
+#            tags:
+#              - "consumer"
+#              - "analytics"
+#            configVersion: 1.0
+#
+#    - name: tenant-b
+#      company:
+#        - code: company-x
+#          propertyA: "CompanyX-PropertyA"
+#          propertyB: "CompanyX-PropertyB"
+#          routing:
+#            channels:
+#              - name: rvm-abc
+#                url: http://sure:8080/
+#                signature: test-sure-token
+#              - name: rvm-xyz
+#                url: http://xyz:8080/
+#                signature: test-sepa-token
+#
+#            fallback:
+#              primary:
+#                url: http://primary-fallback:8080/
+#                signature: primary-fallback-token
+#              secondary:
+#                url: http://secondary-fallback:8080/
+#                signature: secondary-fallback-token
+#
+#          monitoring:
+#            enabled: true
+#            endpoints:
+#              - name: logs
+#                url: http://monitor-logs:9000/
+#              - name: metrics
+#                url: http://monitor-metrics:9100/
+#            thresholds:
+#              errorRate: 0.05
+#              latencyMs: 1000
+#
+#        - code: company-y
+#          propertyA: "CompanyY-PropertyA"
+#          propertyB: "CompanyY-PropertyB"
+#          routing:
+#            channels:
+#              - name: route-lmn
+#                url: http://sureyu:8080/
+#                signature: test-sure-token
+#
+#            advancedRoutingOptions:
+#              regionOverrides:
+#                - region: "eu-west-1"
+#                  endpoint: "http://eu-west-endpoint:8080/"
+#                - region: "us-east-1"
+#                  endpoint: "http://us-east-endpoint:8080/"
+#              canaryRelease: true
+#
+#          repo:
+#            - name: data-repo-weryuye
+#              url: https://crdwrt:8080/
+#            - name: repo-837584j
+#              url: https://repodhsjh:8056/
+#            - name: specialized-repo
+#              url: https://specialized-repo:9020/
+#              config:
+#                encryption: true
+#                region: "asia-south"
+#                maintenanceWindow:
+#                  dayOfWeek: "Sunday"
+#                  startTime: "02:00"
+#                  durationHours: 2
+#
+#          metadata:
+#            owner: "team-Y-security"
+#            tags:
+#              - "pci"
+#              - "high-priority"
+#            configVersion: 3.7
+#
+#
