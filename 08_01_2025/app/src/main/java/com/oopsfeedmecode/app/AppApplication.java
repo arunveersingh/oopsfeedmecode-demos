@@ -1,16 +1,18 @@
 package com.oopsfeedmecode.app;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class AppApplication {
-	private static final Logger logger = LoggerFactory.getLogger(AppApplication.class);
+	private static final Logger logger = LogManager.getLogger(AppApplication.class.getName());
+
 	public static void main(String[] args) {
-		logger.atDebug().setMessage("Starting app").log();
+		logger.debug("Starting app");
 		SpringApplication.run(AppApplication.class, args);
-		logger.atDebug().setMessage("Started app").log();
+		logger.debug("Started app");
 	}
 }
