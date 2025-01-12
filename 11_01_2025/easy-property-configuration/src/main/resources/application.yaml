@@ -12,9 +12,26 @@ app:
   tenants:
       - name: tenant-a
         partners:
+          - id: dsfd
+            contract:
+              - start: 7823748
+              - end: sdjhajf
           - id: partner-1
           - id: partner-2
+            contract:
+              - start: 01-01-25
+              - end: 31-12-99
       - name: tenant-b
         partners:
           - id: partner-3
           - id: partner-2
+        customers:
+          - id: customer-1
+            subscription: TRUE
+            renewal: FALSE
+            additional:
+              key1: value1
+              key2: value2
+  metadata:
+    key1: value1
+    key2: value2
