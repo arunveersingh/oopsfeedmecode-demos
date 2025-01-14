@@ -1,6 +1,9 @@
 package com.oopsfeedmecode.easy_property_configuration.properties;
 
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.context.properties.bind.ConstructorBinding;
 import org.springframework.context.annotation.Configuration;
 
 import java.util.List;
@@ -9,12 +12,13 @@ import java.util.Map;
 /**
  * Binds to properties under "app" in application.yaml
  */
-@Configuration
 @ConfigurationProperties(prefix = "app")
 public class AppProperties {
 
+    @NotNull
     private SystemProps system;
     private List<Tenant> tenants;
+
     private Map<String, String> metadata; // for app.metadata key-value pairs
 
     public SystemProps getSystem() {
@@ -53,13 +57,11 @@ public class AppProperties {
     // -----------------------------------------------------
     // Nested Classes
     // -----------------------------------------------------
-
-    /**
-     * Maps the "system" sub-property:
-     *   app.system.name
-     *   app.system.version
-     */
     public static class SystemProps {
+
+        /**
+         * Name of the application
+         */
         private String name;
         private String version;
 
