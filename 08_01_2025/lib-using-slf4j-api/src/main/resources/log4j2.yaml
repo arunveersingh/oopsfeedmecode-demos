@@ -1,0 +1,34 @@
+Configuration:
+  status: warn
+  Appenders:
+    # Console Appender for optional console output during testing
+    Console:
+      name: ConsoleAppender
+      target: SYSTEM_OUT
+      PatternLayout:
+        pattern: "[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n"
+
+    # File Appender to write logs to a file
+    File:
+      name: FileAppender
+      fileName: test-log.log
+      append: true
+      PatternLayout:
+        pattern: "[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n"
+
+  Loggers:
+    # Enable DEBUG level for your test classes or package
+    Logger:
+      name: com.oopsfeedmecode.lib_using_slf4j_api.utils
+      level: debug
+      additivity: false
+      AppenderRef:
+        - ref: FileAppender
+        - ref: ConsoleAppender
+
+    # Root logger for all other logs
+    Root:
+      level: info
+      AppenderRef:
+        - ref: FileAppender
+        - ref: ConsoleAppender
