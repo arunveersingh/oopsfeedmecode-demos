@@ -1,18 +1,23 @@
 package com.example.demo;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.example.demo.package1.Nice;
+import com.example.demo.package2.NotSoNice;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class DemoApplication {
 
-	private static final Logger logger = LoggerFactory.getLogger(DemoApplication.class);
-
 	public static void main(String[] args) {
-		logger.atWarn().log("Starting app...");
 		SpringApplication.run(DemoApplication.class, args);
-		logger.atDebug().log("... app started.");
+
+
+		Nice.methodWithInfoLogs();
+
+		Nice.methodWithDebugLogs();
+
+		NotSoNice.methodWithInfoLogs();
+
+		NotSoNice.methodWithDebugLogs();
 	}
 }
